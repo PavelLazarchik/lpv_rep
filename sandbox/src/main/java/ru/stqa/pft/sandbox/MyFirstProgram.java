@@ -6,22 +6,26 @@ public class MyFirstProgram {
         hello("User");
         hello("Pavel");
 
-        double a = 4;
-        double b = 6;
-        System.out.println("Плащадь прямоугольника со сторонами " + a + " и " + b + " = " + areaRectangle(a,b));
+        Square s = new Square(6); //создаем новый объект s с характеристиками класс Square. Сча используем конструктор
+       // s.l = 4; // уточняем, что для данного объекта сторона квадрата будет равна 4
 
-        System.out.println("Пладщадь квалрата со сторонами " + a + " равна " + areaSquare(a));
+        Rectangle r = new Rectangle(4, 6); // параметры передаются в конструктор
+
+
+        System.out.println("Площадь прямоугольника со сторонами " + r.a + " и " + r.b + " = " + areaRectangle(r));
+
+        System.out.println("Плодщадь квалрата со сторонами " + s.l + " равна " + areaSquare(s));
     }
 
     public static void hello (String somebody) {
         System.out.println("Hello, " + somebody + "!");
     }
 
-    public static double areaRectangle (double a, double b) {
-       return a * b;
+    public static double areaRectangle (Rectangle r) {
+       return r.a * r.b;
     }
 
-    public static double areaSquare (double a) {
-        return a * a;
+    public static double areaSquare (Square s) { // теперь метод areaSquare будет использовать класс Square. s- сторона
+        return s.l * s.l; // в классе переменная именно l - значит надо создать объект класса
     }
 }
