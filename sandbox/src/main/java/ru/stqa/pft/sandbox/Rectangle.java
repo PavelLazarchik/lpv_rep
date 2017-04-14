@@ -11,4 +11,8 @@ public class Rectangle {
     this.a = a; //значение аттрибкта создаваемого объекта равно значению параметра, переданного в конструктор
     this.b = b;
   }
+
+  public  double areaRectangle () {
+    return this.a * this.b;
+  }
 }
