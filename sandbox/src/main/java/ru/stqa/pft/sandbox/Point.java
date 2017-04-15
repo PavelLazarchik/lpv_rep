@@ -6,6 +6,6 @@ public class Point {
   public double x;
   public double y;
 
-  //создать метод, который будет вычислять расстояние между двумя точками
+
 
 }
