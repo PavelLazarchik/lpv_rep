@@ -11,27 +11,28 @@ public class MyFirstProgram {
 
         //Создать объекты класса Point и задать значения координат для двух точек именно для метода distanceBetweenDots,
         // так как определены переменные
-        Point point1 = new Point();
-        point1.x = 3;
-        point1.y = 7;
+        Point pointFrom = new Point(3, 7);
+        Point pointTo = new Point(6, 9);
 
-        Point point2 = new Point();
-        point2.x = 6;
-        point2.y = 9;
 
-        //объявляем переменную, значение которой равна значению из вычисляемого метода
-        double result = distanceBetweenDots(point1, point2);
-        System.out.println("Result:" + result);
+        double result = Point.distanceBetweenDots(pointFrom, pointTo);
+        System.out.println("Result: " + result);
+
+
 
         //double resultFromSpecifiedPoints = distanceBetweenSpecifiedDots();
         //System.out.println("Result from speficied points:" + resultFromSpecifiedPoints);
-        System.out.println("Площадь прямоугольника со сторонами " + r.a + " и " + r.b + " = " + r.areaRectangle());
-        System.out.println("Плодщадь квалрата со сторонами " + s.l + " равна " + s.areaSquare());
+       // System.out.println("Площадь прямоугольника со сторонами " + r.a + " и " + r.b + " = " + r.areaRectangle());
+       // System.out.println("Плодщадь квалрата со сторонами " + s.l + " равна " + s.areaSquare());
+       // System.out.println("Плодщадь dsasa со сторонfами равна " + pointTo.distanceBetweenDots());
     }
 
+
+
+/*
     //создать метод, который вычислит расстояние между двумя точками
     public static double distanceBetweenDots (Point point1, Point point2) {
-        // объявил переменную, значение которой будет равно расстоянию между точек
+       //  объявил переменную, значение которой будет равно расстоянию между точек
         double d = Math.sqrt(Math.pow((point2.x - point1.x),2) + Math.pow((point2.y - point1.y),2));
         return d;
     }
