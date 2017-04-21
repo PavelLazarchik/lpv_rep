@@ -76,6 +76,16 @@ public class TestBase {
     wd.findElement(By.linkText("groups")).click();
   }
 
+  protected void deleteSelectedContact() {
+      wd.findElement(By.xpath("//div[@id='content']/form[2]/div[2]/input")).click();
+  }
+
+  protected void selectContact() {
+      if (!wd.findElement(By.id("8")).isSelected()) {
+          wd.findElement(By.id("8")).click();
+      }
+  }
+
   @AfterMethod
   public void tearDown() {
     wd.quit();
