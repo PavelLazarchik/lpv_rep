@@ -151,4 +151,8 @@ public class TestBase {
   protected void gotoContactPage() {
       wd.findElement(By.linkText("home")).click();
   }
+
+  protected void alertAcception() {
+      wd.switchTo().alert().accept();
+  }
 }

@@ -9,6 +9,8 @@ public class ContactDeletionTests extends TestBase{
         gotoContactPage();
         selectContact();
         deleteSelectedContact();
-       gotoContactPage();
+        alertAcception();
+        gotoContactPage();
     }
+
 }
