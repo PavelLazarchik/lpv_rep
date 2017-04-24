@@ -1,6 +1,5 @@
 package ru.stqa.pft.addressbook.appmanager;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
@@ -15,7 +14,7 @@ public class ApplicationManager {
 
   private ContactHelper contactHelper;
   private SessionHelper sessionHelper;
-  private NavigationHelper navigationHelper;
+  public NavigationHelper navigationHelper;
   private GroupHelper groupHelper;
 
 
@@ -44,10 +43,6 @@ public class ApplicationManager {
 
   public void stop() {
     wd.quit();
-  }
-
-  public void gotoContactPage() {
-      wd.findElement(By.linkText("home")).click();
   }
 
   public void alertAcception() {
