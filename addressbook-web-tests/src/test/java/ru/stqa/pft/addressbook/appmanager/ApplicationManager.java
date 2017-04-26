@@ -1,6 +1,9 @@
 package ru.stqa.pft.addressbook.appmanager;
 
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import sun.plugin2.util.BrowserType;
 
 import java.util.concurrent.TimeUnit;
 
@@ -9,18 +12,28 @@ import java.util.concurrent.TimeUnit;
  */
 public class ApplicationManager {
 
-  FirefoxDriver wd;
+  WebDriver wd;
 
   private ContactHelper contactHelper;
   private SessionHelper sessionHelper;
   public NavigationHelper navigationHelper;
   private GroupHelper groupHelper;
+  private String browser;
 
+  public ApplicationManager(String browser) {
 
+    this.browser = browser;
+  }
 
 
   public void init() {
-    wd = new FirefoxDriver();
+    if(browser == org.openqa.selenium.remote.BrowserType.FIREFOX) {
+      wd = new FirefoxDriver();
+    } else if (browser == org.openqa.selenium.remote.BrowserType.CHROME) {
+      wd = new ChromeDriver();
+    }
+
+
     wd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
     //такие действия как логин напрямую не относятся к тесту. Тем более они будут повторятся каждый раз
     //поэтому вынес эти действия из теста в @BeforeMethod
