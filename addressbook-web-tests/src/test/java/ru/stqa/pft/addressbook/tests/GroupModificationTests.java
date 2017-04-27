@@ -20,7 +20,7 @@ public class GroupModificationTests extends TestBase {
     app.getNavigationHelper().gotoGroupPage();
     app.getGroupHelper().selectGroup();
     app.getGroupHelper().initGroupModification();
-    app.getGroupHelper().fillGroupForm(new GroupData("LPV Group 333", "LPV Header 1", "LPV Footer 1"));
+    app.getGroupHelper().fillGroupForm(new GroupData("ccc", "ccc", "ccc"));
     app.getGroupHelper().submitGroupModification();
     app.getGroupHelper().returnToGroupPage();
   }

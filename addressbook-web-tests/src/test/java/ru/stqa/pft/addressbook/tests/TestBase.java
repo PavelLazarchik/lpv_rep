@@ -10,7 +10,7 @@ public class TestBase {
 
   //в ApplicationManager создан конструктор, где передается параметр browser. Тут задаем значение этому
   //параметру: в данном случае BrowserType.CHROME - значит тесты будут запускаться в Хроме
-  protected final ApplicationManager app = new ApplicationManager(BrowserType.CHROME);
+  protected final ApplicationManager app = new ApplicationManager(BrowserType.FIREFOX);
 
   @BeforeMethod
   public void setUp() throws Exception {

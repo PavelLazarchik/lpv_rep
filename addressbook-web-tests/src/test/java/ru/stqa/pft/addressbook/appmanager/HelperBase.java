@@ -18,8 +18,30 @@ public class HelperBase {
 
   protected void type(By locator, String text) {
     click(locator);
-    wd.findElement(locator).clear();
-    wd.findElement(locator).sendKeys(text);
+    //пример из урока 3 лекции 5. Например хотим создать группу и задать ей только имя, а остальные поля
+    //оставить со старыми значениями. В условиях нашего тестового приложения, это будут значения null
+    if (text == null){
+      //ничего не происходит, не меняем значения
+    } else {
+      //апдейтим значения на новые
+      wd.findElement(locator).clear();
+      wd.findElement(locator).sendKeys(text);
+    }
+
+    //создать проверку, которая будет просматривать значение в поле и сверять с тем, которое собираемся ввести
+    //вследствие апдейта какого-либо поля
+    //для этого объявим переменную, которая будет в себе содержать старое значение и сварним его с тем, которое
+    //собираемся ввести. Если они совпадают - ничего не делаем. А если нет - то вводим новое значение
+     String existingText = wd.findElement(locator).getAttribute("value");
+    if (existingText.equals(text)) {
+      // если они идентичны, то ничего не делаем
+    } else {
+      //если разные, то апдейтим значение
+      wd.findElement(locator).clear();
+      wd.findElement(locator).sendKeys(text);
+    }
+
+
   }
 
   public boolean isAlertPresent() {

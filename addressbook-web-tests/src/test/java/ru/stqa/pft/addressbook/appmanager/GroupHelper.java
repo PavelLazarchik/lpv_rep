@@ -27,7 +27,7 @@ public class GroupHelper extends HelperBase {
     }
     type(By.name("group_header"), groupData.getHeader());
     click(By.name("group_footer"));
-    wd.findElement(By.name("group_footer")).sendKeys("\\9");
+    wd.findElement(By.name("group_footer")).sendKeys();
     type(By.name("group_footer"), groupData.getFooter());
   }
 
