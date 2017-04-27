@@ -3,15 +3,13 @@ package ru.stqa.pft.addressbook.appmanager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import sun.plugin2.util.BrowserType;
 
 import java.util.concurrent.TimeUnit;
 
-/**
- * Created by lap on 4/24/17.
- */
+
 public class ApplicationManager {
 
+  //использую общий компонент webdriver, что позволит мне запускать тесты в различных браузерах
   WebDriver wd;
 
   private ContactHelper contactHelper;
