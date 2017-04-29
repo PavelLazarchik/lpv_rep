@@ -55,7 +55,7 @@ public class ContactHelper extends HelperBase {
     //надо использовать вспомогательный класс Select
     //в качестве параметра указывается элемент, найденный на странице создания контакта
     //в этом объекте и надо вызвать наш метод getGroup из ContactData class
-    
+
     if (isElementPresent(By.name("new_group"))) {
       new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup()); 
     }
