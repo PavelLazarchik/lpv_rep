@@ -11,8 +11,9 @@ public class ContactData {
   private final String homePhone;
   private final String emailFirst;
   private final String secondAddress;
+  private String group;
 
-  public ContactData(String firstName, String middleName, String lastName, String nickname, String company, String title, String firstAddress, String homePhone, String emailFirst, String secondAddress) {
+  public ContactData(String firstName, String middleName, String lastName, String nickname, String company, String title, String firstAddress, String homePhone, String emailFirst, String secondAddress, String group) {
     this.firstName = firstName;
     this.middleName = middleName;
     this.lastName = lastName;
@@ -23,6 +24,7 @@ public class ContactData {
     this.homePhone = homePhone;
     this.emailFirst = emailFirst;
     this.secondAddress = secondAddress;
+    this.group = group;
   }
 
   public String getFirstName() {
@@ -63,5 +65,11 @@ public class ContactData {
 
   public String getSecondAddress() {
     return secondAddress;
+  }
+
+
+  //создали метод, который позволит получить значение из drop down 'GROUP' при создании нового контакта
+  public String getGroup() {
+    return group;
   }
 }

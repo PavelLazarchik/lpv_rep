@@ -3,6 +3,7 @@ package ru.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 
 public class HelperBase {
@@ -51,5 +52,17 @@ public class HelperBase {
     } catch (NoAlertPresentException e) {
       return false;
     }
+  }
+
+  //так как такого локатора new_group просто нет, приложение должно падать
+  //надо создать метод, который будет проверять, есть ли такой drop down вообща на странице или нет
+  //и если есть, то заполнять уже данными из метода contactData.getGroup()
+  protected boolean isElementPresent(By locator) {
+  try {
+   wd.findElement(locator);
+   return true;
+  } catch (NoSuchElementException ex) {
+    return false;
+  }
   }
 }

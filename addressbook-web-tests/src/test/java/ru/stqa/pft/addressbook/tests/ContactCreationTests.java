@@ -10,7 +10,8 @@ public class ContactCreationTests extends TestBase {
 
         app.navigationHelper.gotoContactPage();
         app.getContactHelper().initContactCreation();
-        app.getContactHelper().fillContactForm(new ContactData("Pavel", "Lazarchik", "Last Name", "Nickname", "Net", "Mrsrt", "Fish street", "112233", "aaa@aaa.aa", "green street, 17"));
+        //указал в конце группу, в которую будет записываться новый контакт
+        app.getContactHelper().fillContactForm(new ContactData("Pavel", "Lazarchik", "LPVLast Name", "Nickname", "Net", "Mrsrt", "Fish street", "112233", "aaa@aaa.aa", "green street, 17", "ddd"));
         app.getContactHelper().submitContactCreation();
         app.getContactHelper().returnToContactPage();
     }

@@ -1,8 +1,10 @@
 package ru.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.Select;
 import ru.stqa.pft.addressbook.model.ContactData;
 
 /**
@@ -48,6 +50,15 @@ public class ContactHelper extends HelperBase {
     //  wd.findElement(By.name("theform")).click();
 //    click(By.name("theform"));
     type(By.name("address2"), contactData.getSecondAddress());
+
+    //как выбрать элемент из выпадающего списка (из drop down)
+    //надо использовать вспомогательный класс Select
+    //в качестве параметра указывается элемент, найденный на странице создания контакта
+    //в этом объекте и надо вызвать наш метод getGroup из ContactData class
+    
+    if (isElementPresent(By.name("new_group"))) {
+      new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup()); 
+    }
   }
 
   public void initContactCreation() {
