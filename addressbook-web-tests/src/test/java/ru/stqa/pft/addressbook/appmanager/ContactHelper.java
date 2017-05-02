@@ -22,8 +22,8 @@ public class ContactHelper extends HelperBase {
   }
 
   public void selectContact() {
-    if (!wd.findElement(By.id("8")).isSelected()) {
-      click(By.id("8"));
+    if (!wd.findElement(By.name("selected[]")).isSelected()) {
+      click(By.name("selected[]"));
     }
   }
 
@@ -57,7 +57,7 @@ public class ContactHelper extends HelperBase {
     //в этом объекте и надо вызвать наш метод getGroup из ContactData class
 
     if (isElementPresent(By.name("new_group"))) {
-      new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup()); 
+      new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
     }
   }
 
@@ -67,11 +67,26 @@ public class ContactHelper extends HelperBase {
 
 
   public void initContactModification() {
-    click(By.xpath("//table[@id='maintable']/tbody/tr[5]/td[8]/a/img"));
+    click(By.name("selected[]"));
+//    click(By.xpath("//table[@id='maintable']/tbody/tr[5]/td[8]/a/img"));
   }
 
   public void submitContactModification() {
     click(By.xpath("//div[@id='content']/form[1]/input[22]"));
   }
 
+
+  //создадим метод, который будет создавать контакт
+  public void createContact(ContactData contactData) {
+    initContactCreation();
+    fillContactForm(contactData);
+    submitContactCreation();
+    returnToContactPage();
+  }
+
+  //создать метод, который будет проверять, есть ли хоть один чекбокс на странице контактов
+  //для этого используем уже существующий метод isElementPresent из класса HelperBase
+  public boolean isThereAContact() {
+    return isElementPresent(By.name("selected[]"));
+  }
 }

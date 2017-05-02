@@ -18,7 +18,7 @@ public class HelperBase {
   }
 
   protected void type(By locator, String text) {
-    click(locator);
+   click(locator);
     //пример из урока 3 лекции 5. Например хотим создать группу и задать ей только имя, а остальные поля
     //оставить со старыми значениями. В условиях нашего тестового приложения, это будут значения null
     if (text == null){

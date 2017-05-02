@@ -34,7 +34,7 @@ public class ApplicationManager {
     }
 
 
-    wd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+    wd.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     //такие действия как логин напрямую не относятся к тесту. Тем более они будут повторятся каждый раз
     //поэтому вынес эти действия из теста в @BeforeMethod
     wd.get("http://localhost/addressbook/group.php");
