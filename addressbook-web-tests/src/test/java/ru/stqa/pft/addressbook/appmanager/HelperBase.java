@@ -18,10 +18,10 @@ public class HelperBase {
   }
 
   protected void type(By locator, String text) {
-   click(locator);
+    click(locator);
     //пример из урока 3 лекции 5. Например хотим создать группу и задать ей только имя, а остальные поля
     //оставить со старыми значениями. В условиях нашего тестового приложения, это будут значения null
-    if (text == null){
+    if (text == null) {
       //ничего не происходит, не меняем значения
     } else {
       //апдейтим значения на новые
@@ -33,9 +33,11 @@ public class HelperBase {
     //вследствие апдейта какого-либо поля
     //для этого объявим переменную, которая будет в себе содержать старое значение и сварним его с тем, которое
     //собираемся ввести. Если они совпадают - ничего не делаем. А если нет - то вводим новое значение
-     String existingText = wd.findElement(locator).getAttribute("value");
+    String existingText = wd.findElement(locator).getAttribute("value");
     if (existingText.equals(text)) {
       // если они идентичны, то ничего не делаем
+     // wd.findElement(locator).clear();
+      //wd.findElement(locator).sendKeys(text);
     } else {
       //если разные, то апдейтим значение
       wd.findElement(locator).clear();
@@ -58,11 +60,11 @@ public class HelperBase {
   //надо создать метод, который будет проверять, есть ли такой drop down вообща на странице или нет
   //и если есть, то заполнять уже данными из метода contactData.getGroup()
   protected boolean isElementPresent(By locator) {
-  try {
-   wd.findElement(locator);
-   return true;
-  } catch (NoSuchElementException ex) {
-    return false;
-  }
+    try {
+      wd.findElement(locator);
+      return true;
+    } catch (NoSuchElementException ex) {
+      return false;
+    }
   }
 }
