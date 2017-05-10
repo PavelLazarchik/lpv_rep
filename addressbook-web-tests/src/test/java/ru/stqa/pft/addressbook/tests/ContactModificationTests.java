@@ -1,6 +1,7 @@
 package ru.stqa.pft.addressbook.tests;
 
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
 
@@ -21,11 +22,17 @@ public class ContactModificationTests extends TestBase{
     if(app.getContactHelper().isThereAContact() != true){
       app.getContactHelper().createContact(new ContactData("Sergei", "Lazarchik", "Clinton", "Nickname", "Net", "Mrsrt", "Fish street", "112233", "aaa@aaa.aa", "green street, 17", "ccc"));
     }
+    //используем метод, который будет считать количество контактов ДО создания нового контакта
+    int before = app.getContactHelper().getContactCount();
 
     app.getContactHelper().initContactModification();
     app.getContactHelper().fillContactForm(new ContactData("Pavel 123", null, null, null, null, null, "LPV ADDRESS UPDATED", null, null, "LPVgreen street, 17 LPV", null));
     app.getContactHelper().submitContactModification();
     app.getContactHelper().returnToContactPage();
+    //используем метод, который будет считать количество контактов ПОСЛЕ создания нового контакта
+    int after = app.getContactHelper().getContactCount();
+    //сравним количество контактов ДО и ПОСЛЕ создания. Количество контактов должно увеличитася на 1
+    Assert.assertEquals(after, before);
 
   }
 }

@@ -91,4 +91,11 @@ public class ContactHelper extends HelperBase {
   public boolean isThereAContact() {
     return isElementPresent(By.name("selected[]"));
   }
+
+
+  //создадим метод, который будет считать количество контактов. При подсчете будет использоваться
+  //количество чекбоксов на странице
+  public int getContactCount() {
+   return wd.findElements(By.name("selected[]")).size();
+  }
 }
