@@ -1,5 +1,6 @@
 package ru.stqa.pft.addressbook.tests;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.GroupData;
 
@@ -8,6 +9,8 @@ public class GroupDeletionTests extends TestBase {
   @Test
   public void testGroupDeletion() {
     app.getNavigationHelper().gotoGroupPage();
+    //используем метод, который будет считать количество групп ДО удаления
+   int before = app.getGroupHelper().getGroupCount();
     //необходимо реализовать метод, который проверит, а есть ли на странице хотя бы одна группа
     //если группы нет, то ее необходимо создать, чтобы тест прошел
     if(!app.getGroupHelper().isThereAGroup()) {
@@ -17,6 +20,10 @@ public class GroupDeletionTests extends TestBase {
     app.getGroupHelper().selectGroup();
     app.getGroupHelper().deleteSelectedGroups();
     app.getGroupHelper().returnToGroupPage();
+    //используем метод, который будет считать количество групп ПОСЛЕ удаления
+    int after = app.getGroupHelper().getGroupCount();
+    //сравним количество групп ДО и ПОСЛЕ создания. Количество групп должно увеличитася на 1
+    Assert.assertEquals(after, before - 1);
   }
 
 }
