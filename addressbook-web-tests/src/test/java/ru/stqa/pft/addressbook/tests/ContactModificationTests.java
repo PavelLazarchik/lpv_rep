@@ -25,7 +25,7 @@ public class ContactModificationTests extends TestBase{
     //используем метод, который будет считать количество контактов ДО создания нового контакта
     int before = app.getContactHelper().getContactCount();
 
-    app.getContactHelper().initContactModification();
+    app.getContactHelper().initContactModification(before - 1);
     app.getContactHelper().fillContactForm(new ContactData("Pavel 123", null, null, null, null, null, "LPV ADDRESS UPDATED", null, null, "LPVgreen street, 17 LPV", null));
     app.getContactHelper().submitContactModification();
     app.getContactHelper().returnToContactPage();

@@ -21,10 +21,9 @@ public class ContactHelper extends HelperBase {
     click(By.xpath("//div[@id='content']/form[2]/div[2]/input"));
   }
 
-  public void selectContact() {
-    if (!wd.findElement(By.name("selected[]")).isSelected()) {
-      click(By.name("selected[]"));
-    }
+
+  public void selectContact(int index) {
+    wd.findElements(By.name("selected[]")).get(index).click();
   }
 
   public void returnToContactPage() {
@@ -66,11 +65,8 @@ public class ContactHelper extends HelperBase {
   }
 
 
-  public void initContactModification() {
-    click(By.name("selected[]"));
-    click(By.xpath("html/body/div/div[4]/form[2]/table/tbody/tr/td[8]/a/img"));
-   //click(By.xpath("//table[@id='maintable']/tbody/tr/td[28]/a/img"));
-   //html/body/div/div[4]/form[2]/table/tbody/tr/td[8]/a/img
+  public void initContactModification(int edit) {
+    wd.findElements(By.xpath("//img[@title = 'Edit']")).get(edit).click();
   }
 
   public void submitContactModification() {
@@ -98,4 +94,5 @@ public class ContactHelper extends HelperBase {
   public int getContactCount() {
    return wd.findElements(By.name("selected[]")).size();
   }
+
 }

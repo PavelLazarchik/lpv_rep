@@ -18,7 +18,7 @@ public class ContactDeletionTests extends TestBase{
         //используем метод, который будет считать количество контактов ДО создания нового контакта
         int before = app.getContactHelper().getContactCount();
 
-        app.getContactHelper().selectContact();
+        app.getContactHelper().selectContact(before - 1);
         app.getContactHelper().deleteSelectedContact();
         app.alertAcception();
         app.navigationHelper.gotoContactPage();
