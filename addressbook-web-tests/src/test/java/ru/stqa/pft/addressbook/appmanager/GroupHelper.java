@@ -63,4 +63,11 @@ public class GroupHelper extends HelperBase {
   public boolean isThereAGroup() {
     return isElementPresent(By.name("selected[]"));
   }
+
+
+  //создадим метод, который будет считать количество групп. При подсчете будет использоваться
+  //количество чекбоксов на странице
+  public int getGroupCount() {
+    return   wd.findElements(By.name("selected[]")).size();
+  }
 }
