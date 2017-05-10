@@ -17,7 +17,8 @@ public class GroupDeletionTests extends TestBase {
       //тут создаю метод createGroup, чтобы не переносить слишком много кода из класса GroupCreation
       app.getGroupHelper().createGroup(new GroupData("LPV Group 1", "LPV Header 1", "LPV Footer 1"));
     }
-    app.getGroupHelper().selectGroup();
+    //выбираем какую группу будем удалять: в данном случае последнюю
+    app.getGroupHelper().selectGroup(before - 1);
     app.getGroupHelper().deleteSelectedGroups();
     app.getGroupHelper().returnToGroupPage();
     //используем метод, который будет считать количество групп ПОСЛЕ удаления

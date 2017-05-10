@@ -39,10 +39,11 @@ public class GroupHelper extends HelperBase {
     click(By.xpath("//div[@id='content']/form/input[5]"));
   }
 
-  public void selectGroup() {
-    if (!wd.findElement(By.name("selected[]")).isSelected()) {
-      click(By.name("selected[]"));
-    }
+
+  //Теперь метод находит ВСЕ группы, выбирает ту, которая обозначена в классе GroupDeletionTest
+  //под заданным параметром index и кликаем по ней
+  public void selectGroup(int index) {
+    wd.findElements(By.name("selected[]")).get(index).click();
   }
 
   public void initGroupModification() {
