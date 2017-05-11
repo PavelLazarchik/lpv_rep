@@ -38,6 +38,11 @@ public class GroupDeletionTests extends TestBase {
      //используем метод, который будет считать количество групп ПОСЛЕ удаления
       int after = app.getGroupHelper().getGroupCount();
      */
+
+    //реализуем метод который будет сравнивать списки. Для этого надо удалить из старого списка группу. И сравнивать
+    //списки ДО удаления и ПОСЛЕ удаления
+    before.remove(before.size() - 1);
+      Assert.assertEquals(before, after);
   }
 
 }
