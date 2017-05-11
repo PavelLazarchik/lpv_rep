@@ -2,8 +2,12 @@ package ru.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import ru.stqa.pft.addressbook.model.GroupData;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class GroupHelper extends HelperBase {
@@ -70,5 +74,23 @@ public class GroupHelper extends HelperBase {
   //количество чекбоксов на странице
   public int getGroupCount() {
     return   wd.findElements(By.name("selected[]")).size();
+  }
+
+  //лекция 4 видео № 5
+  //этот метод будет пробегаться по всем группам, загонять их в список и считать размер списка (количество групп в нем)
+  public List<GroupData> getGroupList() {
+    //создаем список, который будем заполнять
+    List<GroupData> groups = new ArrayList<GroupData>();
+    //заполняем список объектами, которые извлекли из страницы веб приложения
+    List<WebElement> elements = wd.findElements(By.cssSelector("span.group"));
+    //теперь по всем найденным элементам проходим в цикле и получаем из него значние текста
+    for (WebElement element : elements) {
+      String name = element.getText();
+      //создаем объект типа GroupData
+      GroupData group = new GroupData(name, null, null);
+      //добавляем созданный объект в список
+      groups.add(group);
+    }
+    return groups;
   }
 }
