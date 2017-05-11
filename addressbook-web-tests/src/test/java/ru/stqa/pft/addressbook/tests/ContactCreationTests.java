@@ -14,10 +14,10 @@ public class ContactCreationTests extends TestBase {
 
         app.navigationHelper.gotoContactPage();
         //используем метод, который будет считать количество контактов ДО создания нового контакта
-        int before = app.getContactHelper().getContactCount();
+       // int before = app.getContactHelper().getContactCount();
 
         //вызываем метод, который сравнит список контактов и их количество ДО создания нового контакта
-       // List<ContactData> before = app.getContactHelper().getContactList();
+         List<ContactData> before = app.getContactHelper().getContactList();
 
         app.getContactHelper().initContactCreation();
         //указал в конце группу, в которую будет записываться новый контакт
@@ -26,11 +26,11 @@ public class ContactCreationTests extends TestBase {
         app.getContactHelper().returnToContactPage();
 
         //вызываем метод, который сравнит список контактов и их количество ПОСЛЕ создания нового контакта
-        //List<ContactData> after = app.getContactHelper().getContactList();
+        List<ContactData> after = app.getContactHelper().getContactList();
 
         //используем метод, который будет считать количество контактов ПОСЛЕ создания нового контакта
-        int after = app.getContactHelper().getContactCount();
+        //int after = app.getContactHelper().getContactCount();
         //сравним количество контактов ДО и ПОСЛЕ создания. Количество контактов должно увеличитася на 1
-        Assert.assertEquals(after, before + 1);
+        Assert.assertEquals(after.size(), before.size() + 1);
     }
 }

@@ -101,12 +101,12 @@ public class ContactHelper extends HelperBase {
 
   //лекция 4 видео № 5
   //этот метод будет пробегаться по всем контактам, загонять их в список и считать размер списка (количество контактов в нем)
- /* public List<ContactData> getContactList() {
+  public List<ContactData> getContactList() {
     //создаем список, который будем заполнять
     List<ContactData> contacts = new ArrayList<ContactData>();
     //заполняем список объектами, которые извлекли из страницы веб приложения
     //посмотреть внимательнее
-    List<WebElement> elements = wd.findElements(By.cssSelector("#maintable>tbody>tr"));
+    List<WebElement> elements = wd.findElements(By.xpath("//img[@title='Edit']"));
     //теперь по всем найденным элементам проходим в цикле и получаем из него значние текста
     for (WebElement element : elements) {
       String name = element.getText();
@@ -118,5 +118,5 @@ public class ContactHelper extends HelperBase {
 
     }
     return contacts;
-  }*/
+  }
 }

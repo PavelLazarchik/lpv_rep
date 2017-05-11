@@ -5,6 +5,8 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
 
+import java.util.List;
+
 public class ContactModificationTests extends TestBase{
 
   //создать метод, который будет:
@@ -23,16 +25,22 @@ public class ContactModificationTests extends TestBase{
       app.getContactHelper().createContact(new ContactData("Sergei", "Lazarchik", "Clinton", "Nickname", "Net", "Mrsrt", "Fish street", "112233", "aaa@aaa.aa", "green street, 17", "ccc"));
     }
     //используем метод, который будет считать количество контактов ДО создания нового контакта
-    int before = app.getContactHelper().getContactCount();
+    //int before = app.getContactHelper().getContactCount();
+    //вызываем метод, который сравнит список контактов и их количество ДО создания нового контакта
+    List<ContactData> before = app.getContactHelper().getContactList();
 
-    app.getContactHelper().initContactModification(before - 1);
+    app.getContactHelper().initContactModification(before.size() - 1);
     app.getContactHelper().fillContactForm(new ContactData("Pavel 123", null, null, null, null, null, "LPV ADDRESS UPDATED", null, null, "LPVgreen street, 17 LPV", null));
     app.getContactHelper().submitContactModification();
     app.getContactHelper().returnToContactPage();
     //используем метод, который будет считать количество контактов ПОСЛЕ создания нового контакта
-    int after = app.getContactHelper().getContactCount();
+    //int after = app.getContactHelper().getContactCount();
+    //вызываем метод, который сравнит список контактов и их количество ДО создания нового контакта
+    List<ContactData> after = app.getContactHelper().getContactList();
+
+
     //сравним количество контактов ДО и ПОСЛЕ создания. Количество контактов должно увеличитася на 1
-    Assert.assertEquals(after, before);
+    Assert.assertEquals(after.size(), before.size());
 
   }
 }
