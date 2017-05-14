@@ -21,7 +21,11 @@ public class GroupCreationTests extends TestBase {
     //сравним размер списка ДО создания новой группы и ПОСЛЕ создания новой группы
     Assert.assertEquals(after.size(), before.size() + 1);
 
-        /* не актуально, так как создан более совершенный тест
+
+  }
+
+}
+ /* не актуально, так как создан более совершенный тест
     //вызываем метод, который посчитает нам количество групп ПЕРЕД созданием еще одной группы
     //int before = app.getGroupHelper().getGroupCount();
 
@@ -31,6 +35,3 @@ public class GroupCreationTests extends TestBase {
     //сравним количество групп ДО и ПОСЛЕ создания. Количество групп должно увеличитася на 1
     //Assert.assertEquals(after, before + 1);
     */
-  }
-
-}
