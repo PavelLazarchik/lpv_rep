@@ -20,6 +20,22 @@ public class GroupData {
     this.footer = footer;
   }
 
+  public String getId() {
+    return id;
+  }
+
+  public String getName() {
+    return name;
+  }
+
+  public String getHeader() {
+    return header;
+  }
+
+  public String getFooter() {
+    return footer;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
@@ -44,22 +60,6 @@ public class GroupData {
             "id='" + id + '\'' +
             ", name='" + name + '\'' +
             '}';
-  }
-
-  public String getId() {
-    return id;
-  }
-
-  public String getName() {
-    return name;
-  }
-
-  public String getHeader() {
-    return header;
-  }
-
-  public String getFooter() {
-    return footer;
   }
 
 

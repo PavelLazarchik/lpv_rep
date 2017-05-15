@@ -111,8 +111,9 @@ public class ContactHelper extends HelperBase {
     for (WebElement element : elements) {
       String name = element.getText();
 
+      String id = element.findElement(By.tagName("input")).getAttribute("value");
       //создаем объект типа GroupData
-      ContactData contactData = new ContactData(name, null, null, null, null, null, null, null, null, null, null);
+      ContactData contactData = new ContactData(id, name, null, null, null, null, null, null, null, null, null, null);
       //добавляем созданный объект в список
       contacts.add(contactData);
 

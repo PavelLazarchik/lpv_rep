@@ -26,9 +26,9 @@ public class GroupHelper extends HelperBase {
 
   public void fillGroupForm(GroupData groupData) {
     type(By.name("group_name"), groupData.getName());
-    if (!wd.findElement(By.xpath("//div[@id='content']/form/select//option[1]")).isSelected()) {
+   /* if (!wd.findElement(By.xpath("//div[@id='content']/form/select//option[1]")).isSelected()) {
       click(By.xpath("//div[@id='content']/form/select//option[1]"));
-    }
+    }*/
     type(By.name("group_header"), groupData.getHeader());
     click(By.name("group_footer"));
     wd.findElement(By.name("group_footer")).sendKeys();

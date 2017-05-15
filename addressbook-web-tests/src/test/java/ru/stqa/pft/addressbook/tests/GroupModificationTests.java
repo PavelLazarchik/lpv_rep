@@ -6,17 +6,7 @@ import ru.stqa.pft.addressbook.model.GroupData;
 import java.util.HashSet;
 import java.util.List;
 
-/**
- * Created by lap on 4/24/17.
- */
 public class GroupModificationTests extends TestBase {
-  //создать метод, который будет:
-  //открыть Group Page
-  //выбрать группу
-  //нажать кнопку 'Edit group'
-  //заполнить поля данными
-  //нажать кнопку 'Update'
-  //перейти по линке 'group page'
 
   @Test
   public void testGroupModifacation() {

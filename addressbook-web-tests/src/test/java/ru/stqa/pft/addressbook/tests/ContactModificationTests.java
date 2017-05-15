@@ -5,16 +5,10 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
 
+import java.util.HashSet;
 import java.util.List;
 
 public class ContactModificationTests extends TestBase{
-
-  //создать метод, который будет:
-  //1. открывать страницу с контактами
-  //2. нажимать кнопку 'Edit' для существующего контакта
-  //3. заполнять поля контакта
-  //4. нажимать кнопку 'update'
-  //5. переходить по линке 'home page'
 
   @Test
   public void testContactModification(){
@@ -30,7 +24,8 @@ public class ContactModificationTests extends TestBase{
     List<ContactData> before = app.getContactHelper().getContactList();
 
     app.getContactHelper().initContactModification(before.size() - 1);
-    app.getContactHelper().fillContactForm(new ContactData("Pavel 123", null, null, null, null, null, "LPV ADDRESS UPDATED", null, null, "LPVgreen street, 17 LPV", null));
+    ContactData contact = new ContactData("Pavel 123", null, null, null, null, null, "LPV ADDRESS UPDATED", null, null, "LPVgreen street, 17 LPV", null);
+    app.getContactHelper().fillContactForm(contact);
     app.getContactHelper().submitContactModification();
     app.getContactHelper().returnToContactPage();
     //используем метод, который будет считать количество контактов ПОСЛЕ создания нового контакта
@@ -41,6 +36,10 @@ public class ContactModificationTests extends TestBase{
 
     //сравним количество контактов ДО и ПОСЛЕ создания. Количество контактов должно увеличитася на 1
     Assert.assertEquals(after.size(), before.size());
+
+    before.remove(before.size() - 1);
+    before.add(contact);
+    Assert.assertEquals(new HashSet<Object>(before),new HashSet<Object>(after));
 
   }
 }
