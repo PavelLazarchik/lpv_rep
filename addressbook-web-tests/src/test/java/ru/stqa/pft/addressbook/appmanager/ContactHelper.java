@@ -11,16 +11,12 @@ import ru.stqa.pft.addressbook.model.ContactData;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by lap on 4/24/17.
- */
 public class ContactHelper extends HelperBase {
 
 
   public ContactHelper(WebDriver wd) {
     super(wd);
   }
-
   public void deleteSelectedContact() {
     click(By.xpath("//div[@id='content']/form[2]/div[2]/input"));
   }
@@ -101,7 +97,7 @@ public class ContactHelper extends HelperBase {
 
   //лекция 4 видео № 5
   //этот метод будет пробегаться по всем контактам, загонять их в список и считать размер списка (количество контактов в нем)
-  public List<ContactData> getContactList() {
+ /* public List<ContactData> getContactList() {
     //создаем список, который будем заполнять
     List<ContactData> contacts = new ArrayList<ContactData>();
     //заполняем список объектами, которые извлекли из страницы веб приложения
@@ -119,5 +115,18 @@ public class ContactHelper extends HelperBase {
 
     }
     return contacts;
-  }
+  }*/
+
+ public List<ContactData> getContactList(){
+   List<ContactData> contacts = new ArrayList<>();
+   List<WebElement> elements = wd.findElements(By.cssSelector("tr[name=entry]"));
+   for (WebElement element : elements){
+     List<WebElement> cells = element.findElements(By.tagName("td"));
+     String firstName = element.getText();
+     String id = element.findElement(By.tagName("input")).getAttribute("value");
+     ContactData contactData = new ContactData(id, firstName, null, null, null, null, null, null, null, null, null, null);
+     contacts.add(contactData);
+   }
+   return contacts;
+ }
 }

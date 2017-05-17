@@ -30,25 +30,6 @@ public class ContactData {
     this.group = group;
   }
 
-  public ContactData(String id, String firstName, String middleName, String lastName, String nickname, String company, String title, String firstAddress, String homePhone, String emailFirst, String secondAddress, String group) {
-    this.id = id;
-    this.firstName = firstName;
-    this.middleName = middleName;
-    this.lastName = lastName;
-    this.nickname = nickname;
-    this.company = company;
-    this.title = title;
-    this.firstAddress = firstAddress;
-    this.homePhone = homePhone;
-    this.emailFirst = emailFirst;
-    this.secondAddress = secondAddress;
-    this.group = group;
-  }
-
-  public String getId() {
-    return id;
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
@@ -65,6 +46,26 @@ public class ContactData {
     int result = id != null ? id.hashCode() : 0;
     result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
     return result;
+  }
+
+  public ContactData(String id, String firstName, String middleName, String lastName, String nickname, String company, String title, String firstAddress, String homePhone, String emailFirst, String secondAddress, String group) {
+    this.id = id;
+
+    this.firstName = firstName;
+    this.middleName = middleName;
+    this.lastName = lastName;
+    this.nickname = nickname;
+    this.company = company;
+    this.title = title;
+    this.firstAddress = firstAddress;
+    this.homePhone = homePhone;
+    this.emailFirst = emailFirst;
+    this.secondAddress = secondAddress;
+    this.group = group;
+  }
+
+  public String getId() {
+    return id;
   }
 
   @Override
