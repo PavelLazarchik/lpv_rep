@@ -4,6 +4,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.GroupData;
 
+import java.util.HashSet;
 import java.util.List;
 
 public class GroupCreationTests extends TestBase {
@@ -13,8 +14,9 @@ public class GroupCreationTests extends TestBase {
     app.getNavigationHelper().gotoGroupPage();
     //вызываем метод, который будет сравнивать список групп и их количество ПЕРЕД созданием еще одной группы
     List<GroupData> before = app.getGroupHelper().getGroupList();
+    GroupData group = new GroupData("aaa", "aaa", "aaa");
 
-    app.getGroupHelper().createGroup(new GroupData("Updated Group Name", "Updated Header name", "Updated Footer name"));
+    app.getGroupHelper().createGroup(group);
     //вызываем метод, который сравнит список групп и их количество ПОСЛЕ создания новой группы
     List<GroupData> after = app.getGroupHelper().getGroupList();
 
@@ -22,6 +24,16 @@ public class GroupCreationTests extends TestBase {
     Assert.assertEquals(after.size(), before.size() + 1);
 
 
+    int max = 0;
+    for (GroupData g : after) {
+      if(g.getId() > max) {
+        max = g.getId();
+      }
+    }
+
+    group.setId(max);
+    before.add(group);
+    Assert.assertEquals(new HashSet<Object>(before), new HashSet<Object>(after));
   }
 
 }

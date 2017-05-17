@@ -5,6 +5,7 @@ import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.GroupData;
 
+import java.util.HashSet;
 import java.util.List;
 
 public class ContactCreationTests extends TestBase {
@@ -18,10 +19,11 @@ public class ContactCreationTests extends TestBase {
 
         //вызываем метод, который сравнит список контактов и их количество ДО создания нового контакта
          List<ContactData> before = app.getContactHelper().getContactList();
+         ContactData contact = new ContactData("lpvPavel", "Lazarchik", "LPVLast Name", "Nickname", "Net", "Mrsrt", "Fish street", "112233", "aaa@aaa.aa", "green street, 17", "ccc");
 
         app.getContactHelper().initContactCreation();
         //указал в конце группу, в которую будет записываться новый контакт
-        app.getContactHelper().fillContactForm(new ContactData("lpvPavel", "Lazarchik", "LPVLast Name", "Nickname", "Net", "Mrsrt", "Fish street", "112233", "aaa@aaa.aa", "green street, 17", "ccc"));
+        app.getContactHelper().fillContactForm(contact);
         app.getContactHelper().submitContactCreation();
         app.getContactHelper().returnToContactPage();
 
@@ -32,5 +34,15 @@ public class ContactCreationTests extends TestBase {
         //int after = app.getContactHelper().getContactCount();
         //сравним количество контактов ДО и ПОСЛЕ создания. Количество контактов должно увеличитася на 1
         Assert.assertEquals(after.size(), before.size() + 1);
+
+        before.add(contact);
+        int max = 0;
+        for (ContactData c : after) {
+            if (c.getId() > max) {
+                max = c.getId();
+            }
+        }
+        contact.setId(max);
+        Assert.assertEquals(new HashSet<Object>(before),new HashSet<Object>(after));
     }
 }
