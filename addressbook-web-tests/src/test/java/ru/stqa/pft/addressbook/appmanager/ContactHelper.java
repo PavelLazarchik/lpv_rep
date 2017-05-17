@@ -97,36 +97,18 @@ public class ContactHelper extends HelperBase {
 
   //лекция 4 видео № 5
   //этот метод будет пробегаться по всем контактам, загонять их в список и считать размер списка (количество контактов в нем)
- /* public List<ContactData> getContactList() {
-    //создаем список, который будем заполнять
+  public List<ContactData> getContactList() {
     List<ContactData> contacts = new ArrayList<ContactData>();
-    //заполняем список объектами, которые извлекли из страницы веб приложения
-    //посмотреть внимательнее
-    List<WebElement> elements = wd.findElements(By.xpath("//img[@title='Edit']"));
-    //теперь по всем найденным элементам проходим в цикле и получаем из него значние текста
+    List<WebElement> elements = wd.findElements(By.name("entry"));
     for (WebElement element : elements) {
-      String name = element.getText();
 
+      List<WebElement> cells = wd.findElements(By.tagName("td"));
+      String firstName = cells.get(2).getText();
       String id = element.findElement(By.tagName("input")).getAttribute("value");
-      //создаем объект типа GroupData
-      ContactData contactData = new ContactData(id, name, null, null, null, null, null, null, null, null, null, null);
-      //добавляем созданный объект в список
-      contacts.add(contactData);
-
+      ContactData contact = new ContactData(id, firstName, null, null, null, null, null, null, null, null, null, null);
+      contacts.add(contact);
     }
     return contacts;
-  }*/
 
- public List<ContactData> getContactList(){
-   List<ContactData> contacts = new ArrayList<>();
-   List<WebElement> elements = wd.findElements(By.cssSelector("tr[name=entry]"));
-   for (WebElement element : elements){
-     List<WebElement> cells = element.findElements(By.tagName("td"));
-     String firstName = element.getText();
-     String id = element.findElement(By.tagName("input")).getAttribute("value");
-     ContactData contactData = new ContactData(id, firstName, null, null, null, null, null, null, null, null, null, null);
-     contacts.add(contactData);
-   }
-   return contacts;
- }
+  }
 }
