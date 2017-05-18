@@ -21,25 +21,28 @@ public class ContactCreationTests extends TestBase {
         //вызываем метод, который сравнит список контактов и их количество ДО создания нового контакта
          List<ContactData> before = app.getContactHelper().getContactList();
          ContactData contact = new ContactData("lpvPavel", "Lazarchik", "LPVLast Name", "Nickname", "Net", "Mrsrt", "Fish street", "112233", "aaa@aaa.aa", "green street, 17", "ccc");
-
         app.getContactHelper().initContactCreation();
         //указал в конце группу, в которую будет записываться новый контакт
         app.getContactHelper().fillContactForm(contact);
         app.getContactHelper().submitContactCreation();
         app.getContactHelper().returnToContactPage();
-
         //вызываем метод, который сравнит список контактов и их количество ПОСЛЕ создания нового контакта
         List<ContactData> after = app.getContactHelper().getContactList();
-
         //используем метод, который будет считать количество контактов ПОСЛЕ создания нового контакта
         //int after = app.getContactHelper().getContactCount();
         //сравним количество контактов ДО и ПОСЛЕ создания. Количество контактов должно увеличитася на 1
         Assert.assertEquals(after.size(), before.size() + 1);
-        
+
         //находим максимальный id
-       int max =  after.stream().max((o1, o2) -> Integer.compare(o1.getId(), o2.getId())).get().getId();
-        contact.setId(max);
+     // int max =  after.stream().max((o1, o2) -> Integer.compare(o1.getId(), o2.getId())).get().getId();
+       // contact.setId(max);
         before.add(contact);
-        Assert.assertEquals(new HashSet<Object>(before),new HashSet<Object>(after));
+
+        Comparator<? super ContactData> byId = (c1, c2) -> Integer.compare(c1.getId(), c2.getId());
+        before.sort(byId);
+        after.sort(byId);
+
+        //Assert.assertEquals(new HashSet<Object>(before),new HashSet<Object>(after));
+        Assert.assertEquals(before,after);
     }
 }
