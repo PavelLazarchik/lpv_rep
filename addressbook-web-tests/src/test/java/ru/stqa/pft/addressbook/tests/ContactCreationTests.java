@@ -35,7 +35,6 @@ public class ContactCreationTests extends TestBase {
         //сравним количество контактов ДО и ПОСЛЕ создания. Количество контактов должно увеличитася на 1
         Assert.assertEquals(after.size(), before.size() + 1);
 
-        before.add(contact);
         int max = 0;
         for (ContactData c : after) {
             if (c.getId() > max) {
@@ -43,6 +42,7 @@ public class ContactCreationTests extends TestBase {
             }
         }
         contact.setId(max);
+        before.add(contact);
         Assert.assertEquals(new HashSet<Object>(before),new HashSet<Object>(after));
     }
 }

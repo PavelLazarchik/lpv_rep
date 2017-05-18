@@ -14,7 +14,7 @@ public class GroupCreationTests extends TestBase {
     app.getNavigationHelper().gotoGroupPage();
     //вызываем метод, который будет сравнивать список групп и их количество ПЕРЕД созданием еще одной группы
     List<GroupData> before = app.getGroupHelper().getGroupList();
-    GroupData group = new GroupData("aaa", "aaa", "aaa");
+    GroupData group = new GroupData("ccc", "ccc", "ccc");
 
     app.getGroupHelper().createGroup(group);
     //вызываем метод, который сравнит список групп и их количество ПОСЛЕ создания новой группы
