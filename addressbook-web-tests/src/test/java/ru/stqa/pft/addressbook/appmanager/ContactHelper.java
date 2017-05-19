@@ -1,10 +1,8 @@
 package ru.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
 import ru.stqa.pft.addressbook.model.ContactData;
 
@@ -17,6 +15,7 @@ public class ContactHelper extends HelperBase {
   public ContactHelper(WebDriver wd) {
     super(wd);
   }
+
   public void deleteSelectedContact() {
     click(By.xpath("//div[@id='content']/form[2]/div[2]/input"));
   }
@@ -99,7 +98,7 @@ public class ContactHelper extends HelperBase {
   //создадим метод, который будет считать количество контактов. При подсчете будет использоваться
   //количество чекбоксов на странице
   public int getContactCount() {
-   return wd.findElements(By.name("selected[]")).size();
+    return wd.findElements(By.name("selected[]")).size();
   }
 
   //лекция 4 видео № 5
@@ -109,10 +108,10 @@ public class ContactHelper extends HelperBase {
     List<WebElement> elements = wd.findElements(By.name("entry"));
     for (WebElement element : elements) {
 
-    //  List<WebElement> cells = wd.findElements(By.tagName("td"));
+      //  List<WebElement> cells = wd.findElements(By.tagName("td"));
       int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
       String firstName = element.findElements(By.tagName("td")).get(2).getText();
-    //  String firstName = cells.get(2).getText();
+      //  String firstName = cells.get(2).getText();
       ContactData contact = new ContactData(id, firstName, null, null, null, null, null, null, null, null, null, null);
       contacts.add(contact);
     }
