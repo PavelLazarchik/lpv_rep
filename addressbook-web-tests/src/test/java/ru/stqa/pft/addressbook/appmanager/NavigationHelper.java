@@ -15,12 +15,12 @@ public class NavigationHelper extends HelperBase {
     //реализуем проверку, которая будет определять есть ли необходимость переходить на
     //какую-то страницу: вдруг мы уже на ней? Тем самым если не будем делать лишних переходов,
     //мы сэкономим время на прогоне тестов
-    if(isElementPresent(By.tagName("h1"))
+    if (isElementPresent(By.tagName("h1"))
             && wd.findElement(By.tagName("h1")).getText().equals("Groups")
             && isElementPresent(By.name("new"))) {
-return;
+      return;
     }
-      click(By.linkText("groups"));
+    click(By.linkText("groups"));
 
   }
 
@@ -28,13 +28,12 @@ return;
     //реализуем проверку, которая будет определять есть ли необходимость переходить на
     //какую-то страницу: вдруг мы уже на ней? Тем самым если не будем делать лишних переходов,
     //мы сэкономим время на прогоне тестов
-    if(isElementPresent(By.id("maintable"))) {
+    if (isElementPresent(By.id("maintable"))) {
       return;
     }
 
     click(By.linkText("home"));
   }
-
 
 
 }

@@ -36,7 +36,7 @@ public class HelperBase {
     String existingText = wd.findElement(locator).getAttribute("value");
     if (existingText.equals(text)) {
       // если они идентичны, то ничего не делаем
-     // wd.findElement(locator).clear();
+      // wd.findElement(locator).clear();
       //wd.findElement(locator).sendKeys(text);
     } else {
       //если разные, то апдейтим значение
