@@ -29,11 +29,8 @@ public class ContactModificationTests extends TestBase{
     //вызываем метод, который сравнит список контактов и их количество ДО создания нового контакта
     List<ContactData> before = app.getContactHelper().getContactList();
     int index = before.size() - 1;
-    app.getContactHelper().initContactModification(index);
     ContactData contact = new ContactData(before.get(index).getId(), "Pavel 123", null, null, null, null, null, "LPV ADDRESS UPDATED", null, null, "LPVgreen street, 17 LPV", null);
-    app.getContactHelper().fillContactForm(contact);
-    app.getContactHelper().submitContactModification();
-    app.getContactHelper().returnToContactPage();
+    app.getContactHelper().modifyContact(index, contact);
     List<ContactData> after = app.getContactHelper().getContactList();
     Assert.assertEquals(after.size(), before.size());
     before.remove(index);
@@ -43,6 +40,8 @@ public class ContactModificationTests extends TestBase{
     after.sort(byId);
     Assert.assertEquals(before,after);
   }
+
+
 }
 
 //используем метод, который будет считать количество контактов ДО создания нового контакта

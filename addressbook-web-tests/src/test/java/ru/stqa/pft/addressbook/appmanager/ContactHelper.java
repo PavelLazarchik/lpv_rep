@@ -82,6 +82,13 @@ public class ContactHelper extends HelperBase {
     returnToContactPage();
   }
 
+  public void modifyContact(int index, ContactData contact) {
+    initContactModification(index);
+    fillContactForm(contact);
+    submitContactModification();
+    returnToContactPage();
+  }
+
   //создать метод, который будет проверять, есть ли хоть один чекбокс на странице контактов
   //для этого используем уже существующий метод isElementPresent из класса HelperBase
   public boolean isThereAContact() {
