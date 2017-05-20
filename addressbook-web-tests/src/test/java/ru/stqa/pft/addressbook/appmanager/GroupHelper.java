@@ -57,18 +57,25 @@ public class GroupHelper extends HelperBase {
     click(By.name("update"));
   }
 
-  public void createGroup(GroupData group) {
+  public void create(GroupData group) {
     initGroupCreation();
     fillGroupForm(group);
     submitGroupCreation();
     returnToGroupPage();
   }
 
-  public void modifyGroup(int index, GroupData group) {
+  public void modify(int index, GroupData group) {
     selectGroup(index);
     initGroupModification();
     fillGroupForm(group);
     submitGroupModification();
+    returnToGroupPage();
+  }
+
+  public void delete(int index) {
+    //выбираем какую группу будем удалять: в данном случае последнюю
+    selectGroup(index);
+    deleteSelectedGroups();
     returnToGroupPage();
   }
 
@@ -85,7 +92,7 @@ public class GroupHelper extends HelperBase {
 
   //лекция 4 видео № 5
   //этот метод будет пробегаться по всем группам, загонять их в список и считать размер списка (количество групп в нем)
-  public List<GroupData> getGroupList() {
+  public List<GroupData> list() {
     //создаем список, который будем заполнять
     List<GroupData> groups = new ArrayList<GroupData>();
     //заполняем список объектами, которые извлекли из страницы веб приложения

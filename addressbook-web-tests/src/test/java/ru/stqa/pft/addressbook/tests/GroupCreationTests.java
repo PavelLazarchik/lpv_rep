@@ -11,13 +11,13 @@ public class GroupCreationTests extends TestBase {
 
   @Test
   public void testGroupCreation() {
-    app.getNavigationHelper().gotoGroupPage();
+    app.goTo().groupPage();
     //вызываем метод, который будет сравнивать список групп и их количество ПЕРЕД созданием еще одной группы
-    List<GroupData> before = app.getGroupHelper().getGroupList();
+    List<GroupData> before = app.group().list();
     GroupData group = new GroupData("lpv", "ccc", "ccc");
-    app.getGroupHelper().createGroup(group);
+    app.group().create(group);
     //вызываем метод, который сравнит список групп и их количество ПОСЛЕ создания новой группы
-    List<GroupData> after = app.getGroupHelper().getGroupList();
+    List<GroupData> after = app.group().list();
     //сравним размер списка ДО создания новой группы и ПОСЛЕ создания новой группы
     Assert.assertEquals(after.size(), before.size() + 1);
     //находим максимальный id
@@ -32,10 +32,10 @@ public class GroupCreationTests extends TestBase {
 }
  /* не актуально, так как создан более совершенный тест
     //вызываем метод, который посчитает нам количество групп ПЕРЕД созданием еще одной группы
-    //int before = app.getGroupHelper().getGroupCount();
+    //int before = app.group().getGroupCount();
 
     // посчитаем количество групп ПОСЛЕ создания новой группы
-    // int after = app.getGroupHelper().getGroupCount();
+    // int after = app.group().getGroupCount();
 
     //сравним количество групп ДО и ПОСЛЕ создания. Количество групп должно увеличитася на 1
     //Assert.assertEquals(after, before + 1);

@@ -11,7 +11,7 @@ public class NavigationHelper extends HelperBase {
     super(wd);
   }
 
-  public void gotoGroupPage() {
+  public void groupPage() {
     //реализуем проверку, которая будет определять есть ли необходимость переходить на
     //какую-то страницу: вдруг мы уже на ней? Тем самым если не будем делать лишних переходов,
     //мы сэкономим время на прогоне тестов
