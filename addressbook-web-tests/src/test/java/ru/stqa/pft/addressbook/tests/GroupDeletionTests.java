@@ -17,7 +17,7 @@ public class GroupDeletionTests extends TestBase {
     //если группы нет, то ее необходимо создать, чтобы тест прошел
     if (app.group().list().size() == 0) {
       //тут создаю метод create, чтобы не переносить слишком много кода из класса GroupCreation
-      app.group().create(new GroupData("LPV Group 1", "LPV Header 1", "LPV Footer 1"));
+      app.group().create(new GroupData().withName("lpv group 1"));
     }
   }
 

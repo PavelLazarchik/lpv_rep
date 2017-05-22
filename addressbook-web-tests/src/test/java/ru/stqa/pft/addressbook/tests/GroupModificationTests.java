@@ -16,7 +16,7 @@ public class GroupModificationTests extends TestBase {
     //если группы нет, то ее необходимо создать, чтобы тест прошел
     if (app.group().list().size() == 0) {
       //тут создаю метод create, чтобы не переносить слишком много кода из класса GroupCreation
-      app.group().create(new GroupData("LPV Group 1", "LPV Header 1", "LPV Footer 1"));
+      app.group().create(new GroupData().withName("test1"));
     }
   }
 
@@ -25,7 +25,7 @@ public class GroupModificationTests extends TestBase {
     //вызываем метод, который будет сравнивать список групп и их количество ПЕРЕД удалением группы
     List<GroupData> before = app.group().list();
     int index = before.size() - 1;
-    GroupData group = new GroupData(before.get(index).getId(), "aaa", "aaa", "aaa");
+    GroupData group = new GroupData().withId(before.get(index).getId()).withName("aaa").withFooter("aaa").withHeader("aaa");
     app.group().modify(index, group);
     //вызываем метод, который будет сравнивать список групп и их количество ПЕРЕД удалением группы
     List<GroupData> after = app.group().list();
