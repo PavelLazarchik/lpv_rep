@@ -17,7 +17,7 @@ public class ContactModificationTests extends TestBase {
     //написать проверку, есть ли на странице контактов хотя бы один контакт.
     //создать метод в ContactHelper, который будет создавать контакт
     if (app.getContactHelper().isThereAContact() != true) {
-      app.getContactHelper().createContact(new ContactData("Sergei", "Lazarchik", "Clinton", "Nickname", "Net", "Mrsrt", "Fish street", "112233", "aaa@aaa.aa", "green street, 17", "ccc"));
+      app.getContactHelper().createContact(new ContactData().withFirstName("Sergei").withLastName("Lazarchik").withMiddleName("Clinton").withNickname("Nickname").withCompany("Net").withTitle("Mrsrt").withFirstAddress("Fish street").withHomePhone("112233").withEmailFirst("aaa@aaa.aa").withSecondAddress("green street, 17").withGroup("ccc"));
     }
   }
 
@@ -26,7 +26,7 @@ public class ContactModificationTests extends TestBase {
     //вызываем метод, который сравнит список контактов и их количество ДО создания нового контакта
     List<ContactData> before = app.getContactHelper().getContactList();
     int index = before.size() - 1;
-    ContactData contact = new ContactData(before.get(index).getId(), "Pavel 123", null, null, null, null, null, "LPV ADDRESS UPDATED", null, null, "LPVgreen street, 17 LPV", null);
+    ContactData contact = new ContactData().withId(before.get(index).getId()).withFirstName("Pavel 123").withFirstAddress("LPV ADDRESS UPDATED").withSecondAddress("LPVgreen street, 17 LPV");
     app.getContactHelper().modifyContact(index, contact);
     List<ContactData> after = app.getContactHelper().getContactList();
     Assert.assertEquals(after.size(), before.size());

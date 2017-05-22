@@ -1,51 +1,18 @@
 package ru.stqa.pft.addressbook.model;
 
 public class ContactData {
-  private int id;
-  private final String firstName;
-  private final String middleName;
-  private final String lastName;
-  private final String nickname;
-  private final String company;
-
-  private final String title;
-  private final String firstAddress;
-
-  private final String homePhone;
-  private final String emailFirst;
-  private final String secondAddress;
+  private int id = Integer.MAX_VALUE;
+  private String firstName;
+  private String middleName;
+  private String lastName;
+  private String nickname;
+  private String company;
+  private String title;
+  private String firstAddress;
+  private String homePhone;
+  private String emailFirst;
+  private String secondAddress;
   private String group;
-
-
-  public ContactData(String firstName, String middleName, String lastName, String nickname, String company, String title, String firstAddress, String homePhone, String emailFirst, String secondAddress, String group) {
-    this.id = Integer.MAX_VALUE;
-    this.firstName = firstName;
-    this.middleName = middleName;
-    this.lastName = lastName;
-    this.nickname = nickname;
-    this.company = company;
-    this.title = title;
-    this.firstAddress = firstAddress;
-    this.homePhone = homePhone;
-    this.emailFirst = emailFirst;
-    this.secondAddress = secondAddress;
-    this.group = group;
-  }
-
-  public ContactData(int id, String firstName, String middleName, String lastName, String nickname, String company, String title, String firstAddress, String homePhone, String emailFirst, String secondAddress, String group) {
-    this.id = id;
-    this.firstName = firstName;
-    this.middleName = middleName;
-    this.lastName = lastName;
-    this.nickname = nickname;
-    this.company = company;
-    this.title = title;
-    this.firstAddress = firstAddress;
-    this.homePhone = homePhone;
-    this.emailFirst = emailFirst;
-    this.secondAddress = secondAddress;
-    this.group = group;
-  }
 
 
   public String getFirstName() {
@@ -107,9 +74,66 @@ public class ContactData {
             '}';
   }
 
-  public void setId(int id) {
+  public ContactData withId(int id) {
     this.id = id;
+    return this;
   }
+
+  public ContactData withFirstName(String firstName) {
+    this.firstName = firstName;
+    return this;
+  }
+
+  public ContactData withMiddleName(String middleName) {
+    this.middleName = middleName;
+    return this;
+  }
+
+  public ContactData withLastName(String lastName) {
+    this.lastName = lastName;
+    return this;
+  }
+
+  public ContactData withNickname(String nickname) {
+    this.nickname = nickname;
+    return this;
+  }
+
+  public ContactData withCompany(String company) {
+    this.company = company;
+    return this;
+  }
+
+  public ContactData withTitle(String title) {
+    this.title = title;
+    return this;
+  }
+
+  public ContactData withFirstAddress(String firstAddress) {
+    this.firstAddress = firstAddress;
+    return this;
+  }
+
+  public ContactData withHomePhone(String homePhone) {
+    this.homePhone = homePhone;
+    return this;
+  }
+
+  public ContactData withEmailFirst(String emailFirst) {
+    this.emailFirst = emailFirst;
+    return this;
+  }
+
+  public ContactData withSecondAddress(String secondAddress) {
+    this.secondAddress = secondAddress;
+    return this;
+  }
+
+  public ContactData withGroup(String group) {
+    this.group = group;
+    return this;
+  }
+
 
   @Override
   public boolean equals(Object o) {

@@ -14,7 +14,7 @@ public class ContactDeletionTests extends TestBase {
     //написать проверку, есть ли на странице контактов хотя бы один контакт.
     //создать метод в ContactHelper, который будет создавать контакт
     if (app.getContactHelper().isThereAContact() != true) {
-      app.getContactHelper().createContact(new ContactData("Sergei", "Lazarchik", "Clinton", "Nickname", "Net", "Mrsrt", "Fish street", "112233", "aaa@aaa.aa", "green street, 17", "ccc"));
+      app.getContactHelper().createContact(new ContactData().withFirstName("Sergei").withLastName("Lazarchik").withMiddleName("Clinton").withNickname("Nickname").withCompany("Net").withTitle("Mrsrt").withFirstAddress("Fish street").withHomePhone("112233").withEmailFirst("aaa@aaa.aa").withSecondAddress("green street, 17").withGroup("ccc"));
     }
   }
 

@@ -16,7 +16,7 @@ public class ContactCreationTests extends TestBase {
 
     //вызываем метод, который сравнит список контактов и их количество ДО создания нового контакта
     List<ContactData> before = app.getContactHelper().getContactList();
-    ContactData contact = new ContactData("lpvPavel", "Lazarchik", "LPVLast Name", "Nickname", "Net", "Mrsrt", "Fish street", "112233", "aaa@aaa.aa", "green street, 17", "ccc");
+    ContactData contact = new ContactData().withFirstName("lpvPavel").withMiddleName("Lazarchik").withLastName("LPVLast Name").withNickname("Nickname").withNickname("Net").withTitle("Mrsrt").withFirstAddress("Fish street").withHomePhone("112233").withEmailFirst("aaa@aaa.aa").withSecondAddress("green street, 17").withGroup("ccc");
     app.getContactHelper().initContactCreation();
     app.getContactHelper().fillContactForm(contact);
     app.getContactHelper().submitContactCreation();
