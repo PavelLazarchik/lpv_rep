@@ -27,9 +27,6 @@ public class GroupHelper extends HelperBase {
 
   public void fillGroupForm(GroupData groupData) {
     type(By.name("group_name"), groupData.getName());
-   /* if (!wd.findElement(By.xpath("//div[@id='content']/form/select//option[1]")).isSelected()) {
-      click(By.xpath("//div[@id='content']/form/select//option[1]"));
-    }*/
     type(By.name("group_header"), groupData.getHeader());
     click(By.name("group_footer"));
     wd.findElement(By.name("group_footer")).sendKeys();
@@ -45,13 +42,7 @@ public class GroupHelper extends HelperBase {
   }
 
 
-  //Теперь метод находит ВСЕ группы, выбирает ту, которая обозначена в классе GroupDeletionTest
-  //под заданным параметром index и кликаем по ней
-  public void selectGroup(int index) {
-    wd.findElements(By.name("selected[]")).get(index).click();
-  }
-
-//реализовали метод который будет выбирать группу по идентификатору
+  //реализовали метод который будет выбирать группу по идентификатору
   public void selectGroupById(int id) {
     wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
   }
@@ -71,20 +62,14 @@ public class GroupHelper extends HelperBase {
     returnToGroupPage();
   }
 
-  public void modify(int index, GroupData group) {
-    selectGroup(index);
+  public void modify(GroupData group) {
+    selectGroupById(group.getId());
     initGroupModification();
     fillGroupForm(group);
     submitGroupModification();
     returnToGroupPage();
   }
 
-  public void delete(int index) {
-    //выбираем какую группу будем удалять: в данном случае последнюю
-    selectGroup(index);
-    deleteSelectedGroups();
-    returnToGroupPage();
-  }
 
   public void delete(GroupData group) {
     //выбираем какую группу будем удалять: в данном случае by id
@@ -101,10 +86,45 @@ public class GroupHelper extends HelperBase {
   //создадим метод, который будет считать количество групп. При подсчете будет использоваться
   //количество чекбоксов на странице
   public int getGroupCount() {
-    return   wd.findElements(By.name("selected[]")).size();
+    return wd.findElements(By.name("selected[]")).size();
   }
 
-  //лекция 4 видео № 5
+
+  //делаем вспомогательные метод all, который возвращает уже готовое множество
+  public Set<GroupData> all() {
+    Set<GroupData> groups = new HashSet<GroupData>();
+    List<WebElement> elements = wd.findElements(By.cssSelector("span.group"));
+    for (WebElement element : elements) {
+      String name = element.getText();
+      int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
+      groups.add(new GroupData().withId(id).withName(name));
+    }
+    return groups;
+  }
+
+
+}
+
+/* do not used any more
+
+public void delete(int index) {
+    //выбираем какую группу будем удалять: в данном случае последнюю
+    selectGroup(index);
+    deleteSelectedGroups();
+    returnToGroupPage();
+  }
+
+  //Теперь метод находит ВСЕ группы, выбирает ту, которая обозначена в классе GroupDeletionTest
+  //под заданным параметром index и кликаем по ней
+  public void selectGroup(int index) {
+    wd.findElements(By.name("selected[]")).get(index).click();
+  }
+
+      if (!wd.findElement(By.xpath("//div[@id='content']/form/select//option[1]")).isSelected()) {
+      click(By.xpath("//div[@id='content']/form/select//option[1]"));
+    }
+
+     //лекция 4 видео № 5
   //этот метод будет пробегаться по всем группам, загонять их в список и считать размер списка (количество групп в нем)
   public List<GroupData> list() {
     //создаем список, который будем заполнять
@@ -121,17 +141,5 @@ public class GroupHelper extends HelperBase {
     return groups;
   }
 
-  //делаем вспомогательные метод all, который возвращает уже готовое множество
-  public Set<GroupData> all() {
-    Set<GroupData> groups = new HashSet<GroupData>();
-    List<WebElement> elements = wd.findElements(By.cssSelector("span.group"));
-    for (WebElement element : elements) {
-      String name = element.getText();
-      int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-      groups.add(new GroupData().withId(id).withName(name));
-    }
-    return groups;
-  }
 
-
-}
+ */
