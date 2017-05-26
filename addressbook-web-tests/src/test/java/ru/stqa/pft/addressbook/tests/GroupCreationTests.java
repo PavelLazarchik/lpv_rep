@@ -6,6 +6,7 @@ import ru.stqa.pft.addressbook.model.GroupData;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.Set;
 
 public class GroupCreationTests extends TestBase {
 
@@ -13,18 +14,21 @@ public class GroupCreationTests extends TestBase {
   public void testGroupCreation() {
     app.goTo().groupPage();
     //вызываем метод, который будет сравнивать список групп и их количество ПЕРЕД созданием еще одной группы
-    List<GroupData> before = app.group().list();
+    Set<GroupData> before = app.group().all();
     GroupData group = new GroupData().withName("ccc").withFooter("Lpv Footer").withHeader("LPV Header");
     app.group().create(group);
     //вызываем метод, который сравнит список групп и их количество ПОСЛЕ создания новой группы
-    List<GroupData> after = app.group().list();
+    Set<GroupData> after = app.group().all();
     //сравним размер списка ДО создания новой группы и ПОСЛЕ создания новой группы
     Assert.assertEquals(after.size(), before.size() + 1);
+
+
+    //присваиваем новой добавленной группе корректный id
+    group.withId(after.stream().mapToInt((g) -> g.getId()).max().getAsInt());
+
+
     //находим максимальный id
     before.add(group);
-    Comparator<? super GroupData> byId = (g1, g2) -> Integer.compare(g1.getId(), g2.getId());
-    before.sort(byId);
-    after.sort(byId);
     //Assert.assertEquals(new HashSet<Object>(before), new HashSet<Object>(after));
     Assert.assertEquals(before, after);
   }
@@ -49,4 +53,8 @@ public class GroupCreationTests extends TestBase {
     // int max = after.stream().max((o1, o2) -> Integer.compare(o1.getId(), o2.getId())).get().getId();
 
    // group.setId(after.stream().max((o1, o2) -> Integer.compare(o1.getId(), o2.getId())).get().getId());
+    Comparator<? super GroupData> byId = (g1, g2) -> Integer.compare(g1.getId(), g2.getId());
+    before.sort(byId);
+    after.sort(byId);
+
    */
