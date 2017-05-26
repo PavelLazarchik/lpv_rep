@@ -51,6 +51,11 @@ public class GroupHelper extends HelperBase {
     wd.findElements(By.name("selected[]")).get(index).click();
   }
 
+//реализовали метод который будет выбирать группу по идентификатору
+  public void selectGroupById(int id) {
+    wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
+  }
+
   public void initGroupModification() {
     click(By.name("edit"));
   }
@@ -77,6 +82,13 @@ public class GroupHelper extends HelperBase {
   public void delete(int index) {
     //выбираем какую группу будем удалять: в данном случае последнюю
     selectGroup(index);
+    deleteSelectedGroups();
+    returnToGroupPage();
+  }
+
+  public void delete(GroupData group) {
+    //выбираем какую группу будем удалять: в данном случае by id
+    selectGroupById(group.getId());
     deleteSelectedGroups();
     returnToGroupPage();
   }
@@ -120,4 +132,6 @@ public class GroupHelper extends HelperBase {
     }
     return groups;
   }
+
+
 }
